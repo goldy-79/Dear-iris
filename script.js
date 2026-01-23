@@ -7,6 +7,7 @@ overlay.onclick = () => {
 overlay.style.display = "none"
 paper.style.display = "block"
 music.volume = 0.3
+music.currentTime = 3
 music.play()
 
 let delay = 0
