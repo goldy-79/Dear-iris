@@ -86,28 +86,63 @@ body {
 .container {
   max-width: 800px;
   margin: auto;
-  padding: 0 24px;
+  padding: 60px 48px;
+  background: rgba(255, 252, 240, 0.9);
+  border-left: 2px solid rgba(120, 100, 60, 0.35);
+  border-right: 2px solid rgba(120, 100, 60, 0.35);
+  box-shadow:
+    0 0 30px rgba(0,0,0,0.15);
   line-height: 1.9;
   font-size: 18px;
 }
 
-/* Headings */
+.container::before,
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  pointer-events: none;
+}
+
+.container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.08),
+    transparent
+  );
+}
+
+.container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.08),
+    transparent
+  );
+}
+
+
 h1 {
   font-weight: normal;
   margin-bottom: 40px;
 }
 
-/* Paragraphs */
 p {
   margin-bottom: 24px;
 }
 
-/* Signature */
 .signature {
   margin-top: 60px;
 }
 
-/* Sentence fade-in effect */
+.line {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
 .line {
   opacity: 0;
   transition: opacity 2s ease;
