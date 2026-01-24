@@ -3,7 +3,11 @@ const paper = document.getElementById("paper")
 const lines = document.querySelectorAll(".line")
 const music = document.getElementById("music")
 
+let musicPlayed = false
+
 overlay.onclick = () => {
+  if(musicPlayed) return
+
   overlay.classList.add("opening")
 
   setTimeout(() => {
@@ -13,6 +17,7 @@ overlay.onclick = () => {
     music.volume = 0.3
     music.currentTime = 3
     music.play()
+    musicPlayed = true
 
     let delay = 0
     lines.forEach((line, index) => {
@@ -35,6 +40,7 @@ function fadeOutMusic(){
       music.volume = vol
     } else{
       music.pause()
+      music.volume = 0
       clearInterval(fadeInterval)
     }
   },50)
