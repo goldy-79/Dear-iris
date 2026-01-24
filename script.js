@@ -15,11 +15,27 @@ overlay.onclick = () => {
     music.play()
 
     let delay = 0
-    lines.forEach(line => {
+    lines.forEach((line, index) => {
       setTimeout(() => {
         line.style.opacity = 1
+        if(index === lines.length - 1){
+          fadeOutMusic()
+        }
       }, delay)
       delay += 1200
     })
   }, 900)
+}
+
+function fadeOutMusic(){
+  let vol = music.volume
+  const fadeInterval = setInterval(() => {
+    if(vol > 0.01){
+      vol -= 0.01
+      music.volume = vol
+    } else{
+      music.pause()
+      clearInterval(fadeInterval)
+    }
+  },50)
 }
